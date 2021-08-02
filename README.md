@@ -1,6 +1,6 @@
 
 
-# Munch
+# MEAN Stack E Commerce App
 
 This project was generated using [Nx](https://nx.dev).
 
