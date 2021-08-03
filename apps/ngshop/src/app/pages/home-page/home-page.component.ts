@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'eshop-home-page',
+  selector: 'ngshop-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
 
