@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
+
+import { CardModule } from 'primeng/card';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { CategoriesService } from '@munch/products';
+
+const UX_MODULE = [CardModule, ToolbarModule, ButtonModule, TableModule];
 
 const routes: Routes = [
   {
@@ -17,21 +27,21 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'products',
-        component: ProductsComponent,
-      },
-      {
         path: 'categories',
-        component: CategoriesComponent,
+        component: CategoriesListComponent,
       },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-      },
-      {
-        path: 'users',
-        component: UsersComponent,
-      },
+      // {
+      //   path: 'products',
+      //   component: ProductsComponent,
+      // },
+      // {
+      //   path: 'orders',
+      //   component: OrdersComponent,
+      // },
+      // {
+      //   path: 'users',
+      //   component: UsersComponent,
+      // },
     ],
   },
 ];
@@ -39,15 +49,18 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    ShellComponent,
     SidebarComponent,
+    ShellComponent,
+    DashboardComponent,
+    CategoriesListComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
+    ...UX_MODULE,
   ],
-  providers: [],
+  providers: [CategoriesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
