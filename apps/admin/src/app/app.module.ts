@@ -14,8 +14,10 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CategoriesService } from '@munch/products';
+import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+import {InputTextModule} from 'primeng/inputtext';
 
-const UX_MODULE = [CardModule, ToolbarModule, ButtonModule, TableModule];
+const UX_MODULE = [CardModule, ToolbarModule, ButtonModule, TableModule, InputTextModule];
 
 const routes: Routes = [
   {
@@ -30,18 +32,10 @@ const routes: Routes = [
         path: 'categories',
         component: CategoriesListComponent,
       },
-      // {
-      //   path: 'products',
-      //   component: ProductsComponent,
-      // },
-      // {
-      //   path: 'orders',
-      //   component: OrdersComponent,
-      // },
-      // {
-      //   path: 'users',
-      //   component: UsersComponent,
-      // },
+      {
+        path: 'categories/form',
+        component: CategoriesFormComponent,
+      },
     ],
   },
 ];
@@ -53,6 +47,7 @@ const routes: Routes = [
     ShellComponent,
     DashboardComponent,
     CategoriesListComponent,
+    CategoriesFormComponent,
   ],
   imports: [
     BrowserModule,
