@@ -1,8 +1,8 @@
 <p-toast></p-toast>
 <div class="admin-page">
   <p-card
-    header="Add Categories"
-    subheader="You can add and edit categories here"
+    [header]="editMode ? 'Edit Category' : 'Add Category'"
+    subheader="You can add or edit categories here"
   >
     <div class="p-grid p-mb-5">
       <div class="p-col-12">
@@ -11,7 +11,7 @@
           <div class="p-toolbar-group-right">
             <p-button
               styleClass="p-button-primary mr-2"
-              label="Create"
+              [label]="editMode ? 'Update' : 'Create'"
               icon="pi pi-plus"
               (click)="onSubmit()"
             ></p-button>
@@ -19,49 +19,54 @@
               styleClass="p-button-secondary"
               label="Cancel"
               icon="pi pi-arrow-circle-left"
-              routerLink="form"
+              (click)="onCancel()"
             ></p-button>
           </div>
         </p-toolbar>
       </div>
     </div>
     <div class="p-grid">
-      <div class="p-col-12"></div>
-      <form [formGroup]="form">
-        <div class="card">
-          <h5>Vertical and Grid</h5>
-          <div class="formgrid grid">
-            <div class="field col">
-              <label for="name">Name</label>
-              <input
-                formControlName="name"
-                id="name"
-                type="text"
-                class="inputfield w-full"
-              />
-              <small
-                *ngIf="categoryForm.name.invalid && isSubmitted"
-                class="p-error"
-                >Name is requried</small
-              >
-            </div>
-            <div class="field col">
-              <label for="icon">Icon</label>
-              <input
-                formControlName="icon"
-                id="icon"
-                type="text"
-                class="inputfield w-full"
-              />
-              <small
-                *ngIf="categoryForm.icon.invalid && isSubmitted"
-                class="p-error"
-                >Icon is requried</small
-              >
+      <div class="p-col-12">
+        <form [formGroup]="form">
+          <div class="card">
+            <h5>Vertical and Grid</h5>
+            <div class="formgrid grid">
+              <div class="field col">
+                <label for="name">Name</label>
+                <input
+                  formControlName="name"
+                  id="name"
+                  type="text"
+                  class="inputfield w-full"
+                />
+                <small
+                  *ngIf="categoryForm.name.invalid && isSubmitted"
+                  class="p-error"
+                  >Name is required</small
+                >
+              </div>
+              <div class="field col">
+                <label for="icon">Icon</label>
+                <input
+                  formControlName="icon"
+                  id="icon"
+                  type="text"
+                  class="inputfield w-full"
+                />
+                <small
+                  *ngIf="categoryForm.icon.invalid && isSubmitted"
+                  class="p-error"
+                  >Icon is required</small
+                >
+              </div>
+              <div class="field col">
+                <label for="color">Color</label><br />
+                <p-colorPicker formControlName="color"></p-colorPicker>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </p-card>
 </div>

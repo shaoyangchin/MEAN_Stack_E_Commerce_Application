@@ -18,7 +18,8 @@
       "@munch/orders": ["libs/orders/src/index.ts"],
       "@munch/products": ["libs/products/src/index.ts"],
       "@munch/ui": ["libs/ui/src/index.ts"],
-      "@munch/users": ["libs/users/src/index.ts"]
+      "@munch/users": ["libs/users/src/index.ts"],
+      "@env/*" : ["environments/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

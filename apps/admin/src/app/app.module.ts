@@ -17,11 +17,22 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CategoriesService } from '@munch/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
-import {InputTextModule} from 'primeng/inputtext';
-import {ToastModule} from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
-const UX_MODULE = [CardModule, ToolbarModule, ButtonModule, TableModule, InputTextModule, ToastModule];
+const UX_MODULE = [
+  CardModule,
+  ToolbarModule,
+  ButtonModule,
+  TableModule,
+  InputTextModule,
+  ToastModule,
+  ConfirmDialogModule,
+  ColorPickerModule,
+];
 
 const routes: Routes = [
   {
@@ -38,6 +49,10 @@ const routes: Routes = [
       },
       {
         path: 'categories/form',
+        component: CategoriesFormComponent,
+      },
+      {
+        path: 'categories/form/:id',
         component: CategoriesFormComponent,
       },
     ],
@@ -62,7 +77,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
     ...UX_MODULE,
   ],
-  providers: [CategoriesService, MessageService],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
