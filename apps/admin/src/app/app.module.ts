@@ -26,6 +26,11 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import {EditorModule} from 'primeng/editor';
 
 
 const UX_MODULE = [
@@ -37,6 +42,11 @@ const UX_MODULE = [
   ToastModule,
   ConfirmDialogModule,
   ColorPickerModule,
+  InputNumberModule,
+  InputTextareaModule,
+  InputSwitchModule,
+  DropdownModule,
+  EditorModule,
 ];
 
 const routes: Routes = [
