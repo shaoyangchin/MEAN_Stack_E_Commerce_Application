@@ -29,7 +29,6 @@
       <div class="p-col-12">
         <form [formGroup]="form">
           <div class="card">
-            <h5>Vertical and Grid</h5>
             <div class="formgrid grid">
               <div class="field col">
                 <label for="name">Name</label>
@@ -38,6 +37,7 @@
                   id="name"
                   type="text"
                   class="inputfield w-full"
+                  pInputText
                 />
                 <small
                   *ngIf="categoryForm.name.invalid && isSubmitted"
@@ -52,6 +52,7 @@
                   id="icon"
                   type="text"
                   class="inputfield w-full"
+                  pInputText
                 />
                 <small
                   *ngIf="categoryForm.icon.invalid && isSubmitted"

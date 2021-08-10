@@ -29,8 +29,8 @@ export class ProductsListComponent implements OnInit {
 
   deleteProduct(productId: string) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this category?',
-      header: 'Delete Category',
+      message: 'Are you sure you want to delete this product?',
+      header: 'Delete Product ',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.productsService.deleteProduct(productId).subscribe(
@@ -55,6 +55,6 @@ export class ProductsListComponent implements OnInit {
   }
 
   updateProduct(productId: string) {
-    this.router.navigateByUrl(`product/form/${productId}`);
+    this.router.navigateByUrl(`products/form/${productId}`);
   }
 }

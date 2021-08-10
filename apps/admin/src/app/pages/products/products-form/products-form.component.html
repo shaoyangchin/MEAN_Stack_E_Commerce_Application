@@ -12,6 +12,7 @@
             <p-button
               styleClass="p-button-primary mr-2"
               [label]="editMode ? 'Update' : 'Create'"
+              (click)="onSubmit()"
               icon="pi pi-plus"
             ></p-button>
             <p-button
@@ -98,8 +99,9 @@
                 <label for="category">Category</label><br />
                 <p-dropdown
                   [options]="categories"
-                  formControlName="brand"
+                  formControlName="category"
                   optionLabel="name"
+                  optionValue="id"
                   styleClass="dropdown w-full"
                   [filter]="true"
                   filterBy="name"
@@ -137,6 +139,23 @@
                   formControlName="richDescription"
                   [style]="{ height: '320px' }"
                 ></p-editor>
+              </div>
+              <div class="field col-12">
+                <label for="name">Main Image</label>
+                <input
+                  type="file"
+                  class="p-inputtext"
+                  accept="image/*"
+                  (change)="onImageUpload($event)"
+                />
+                <small
+                  *ngIf="productForm.description.invalid && isSubmitted"
+                  class="p-error"
+                  >Image is required</small
+                >
+                <div class="col-2 mt-2 pl-0">
+                  <img style="width: 100%" [src]="imageDisplay" alt="" />
+                </div>
               </div>
             </div>
           </div>

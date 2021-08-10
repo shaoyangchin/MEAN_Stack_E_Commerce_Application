@@ -17,7 +17,15 @@
     </div>
     <div class="p-grid">
       <div class="p-col-12">
-        <p-table [value]="products" styleClass="p-datatable-gridlines">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50, 100]"
+          [value]="products"
+          styleClass="p-datatable-gridlines"
+        >
           <ng-template pTemplate="header">
             <tr>
               <th pSortableColumn="name">
@@ -42,7 +50,7 @@
           <ng-template pTemplate="body" let-product>
             <tr>
               <td>{{ product.name }}</td>
-              <td><img [src]="product.image" style="width: 100%;" alt=""></td>
+              <td><img [src]="product.image" style="width: 100%" alt="" /></td>
               <td>{{ product.price }}</td>
               <td>{{ product.countInStock }}</td>
               <td>{{ product.category.name }}</td>
