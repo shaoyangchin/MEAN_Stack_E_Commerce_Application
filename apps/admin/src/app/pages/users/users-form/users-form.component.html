@@ -28,7 +28,6 @@
     <div class="p-grid">
       <div class="p-col-12">
         <form [formGroup]="form">
-          <div class="card">
             <br />
             <div class="formgrid grid">
               <div class="field col">
@@ -75,6 +74,11 @@
                   class="inputfield w-full"
                   pInputText
                 />
+                <small
+                  *ngIf="userForm.password.invalid && isSubmitted"
+                  class="p-error"
+                  >Password is required</small
+                >
               </div>
               <div class="field col-4">
                 <label for="phone">Phone</label><br />
@@ -125,7 +129,8 @@
                   class="inputfield w-full"
                   pInputText
                 />
-              </div> <br>
+              </div>
+              <br />
               <div class="field col-4">
                 <label for="city">City</label>
                 <input
@@ -137,9 +142,9 @@
                 />
               </div>
               <div class="field col-4">
-                <label for="country">Country</label><br>
+                <label for="country">Country</label><br />
                 <p-dropdown
-                [options]="countries"
+                  [options]="countries"
                   formControlName="country"
                   optionLabel="name"
                   optionValue="id"
@@ -148,7 +153,6 @@
                   [showClear]="true"
                   placeholder="Select a country"
                 ></p-dropdown>
-              </div>
             </div>
           </div>
         </form>

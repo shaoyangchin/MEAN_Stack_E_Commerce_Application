@@ -22,6 +22,12 @@ export class UsersListComponent implements OnInit {
     this._getUsers();
   }
 
+  private _getUsers() {
+    this.usersService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
+  }
+
   deleteUser(userId: string) {
     this.confirmationService.confirm({
       message: 'Do you want to Delete this User?',
@@ -57,9 +63,5 @@ export class UsersListComponent implements OnInit {
     return this.usersService.getCountry(countryKey);
   }
 
-  private _getUsers() {
-    this.usersService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
-  }
+
 }

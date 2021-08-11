@@ -5,21 +5,18 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersService, User } from '@munch/users';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
-import * as countriesLib from 'i18n-iso-countries';
-
-declare const require: any;
 
 @Component({
   selector: 'admin-users-form',
   templateUrl: './users-form.component.html',
-  styles: [],
+  styles: []
 })
 export class UsersFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   editMode = false;
   currentUserId: string;
-  countries: any = [];
+  countries: any [];
 
   constructor(
     private messageService: MessageService,
@@ -35,54 +32,23 @@ export class UsersFormComponent implements OnInit {
     this._checkEditMode();
   }
 
-  private _initUserForm(): void {
+  private _initUserForm() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      password: ['', [Validators.required, Validators.email]],
-      email: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      isAdmin: false,
+      isAdmin: [false],
       street: [''],
       apartment: [''],
       zip: [''],
       city: [''],
-      country: [''],
+      country: ['']
     });
   }
 
   private _getCountries() {
-    const newLocal = 'i18n-iso-countries/langs/en.json';
-    countriesLib.registerLocale(require(newLocal));
-    this.countries = Object.entries(
-      countriesLib.getNames('en', { select: 'official' })
-    ).map((entry) => {
-      return {
-        id: entry[0],
-        name: entry[1],
-      };
-    });
-  }
-
-  onSubmit() {
-    this.isSubmitted = true;
-    if (this.form.invalid) {
-      return;
-    }
-    const user: User = {
-      id: this.currentUserId,
-      name: this.userForm.name.value,
-      // icon: this.userForm.icon.value,
-      // color: this.userForm.color.value
-    };
-    if (this.editMode) {
-      this._updateUser(user);
-    } else {
-      this._addUser(user);
-    }
-  }
-
-  onCancel() {
-    this.location.back();
+    this.countries = this.usersService.getCountries();
   }
 
   private _addUser(user: User) {
@@ -91,7 +57,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: `User ${user.name} is created!`,
+          detail: `User ${user.name} is created!`
         });
         timer(2000)
           .toPromise()
@@ -103,7 +69,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'User is not created!',
+          detail: 'User is not created!'
         });
       }
     );
@@ -115,7 +81,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'User is updated!',
+          detail: 'User is updated!'
         });
         timer(2000)
           .toPromise()
@@ -127,7 +93,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'User is not updated!',
+          detail: 'User is not updated!'
         });
       }
     );
@@ -141,6 +107,7 @@ export class UsersFormComponent implements OnInit {
         this.usersService.getUser(params.id).subscribe((user) => {
           this.userForm.name.setValue(user.name);
           this.userForm.email.setValue(user.email);
+          this.userForm.phone.setValue(user.phone);
           this.userForm.isAdmin.setValue(user.isAdmin);
           this.userForm.street.setValue(user.street);
           this.userForm.apartment.setValue(user.apartment);
@@ -152,6 +119,34 @@ export class UsersFormComponent implements OnInit {
         });
       }
     });
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+    const user: User = {
+      id: this.currentUserId,
+      name: this.userForm.name.value,
+      email: this.userForm.email.value,
+      phone: this.userForm.phone.value,
+      isAdmin: this.userForm.isAdmin.value,
+      street: this.userForm.street.value,
+      apartment: this.userForm.apartment.value,
+      zip: this.userForm.zip.value,
+      city: this.userForm.city.value,
+      country: this.userForm.country.value
+    };
+    if (this.editMode) {
+      this._updateUser(user);
+    } else {
+      this._addUser(user);
+    }
+  }
+
+  onCancel() {
+    this.location.back();
   }
 
   get userForm() {
