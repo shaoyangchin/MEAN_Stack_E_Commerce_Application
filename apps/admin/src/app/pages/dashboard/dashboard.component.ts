@@ -1,30 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OrdersService } from '@munch/orders';
 import { ProductsService } from '@munch/products';
 import { UsersService } from '@munch/users';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'admin-dashboard',
-  templateUrl: './dashboard.component.html',
-  styles: [],
+  templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
-  statistics: any [];
+export class DashboardComponent implements OnInit, OnDestroy {
+  statistics = [];
+  endsubs$: Subject<any> = new Subject();
+
   constructor(
     private usersService: UsersService,
-    private productsService: ProductsService,
+    private productService: ProductsService,
     private ordersService: OrdersService
   ) {}
 
   ngOnInit(): void {
     combineLatest([
       this.ordersService.getOrdersCount(),
-      this.productsService.getProductsCount(),
+      this.productService.getProductsCount(),
       this.usersService.getUsersCount(),
       this.ordersService.getTotalSales()
-    ]).subscribe((values) => {
-      this.statistics = values;
-    });
+    ])
+      .pipe(takeUntil(this.endsubs$))
+      .subscribe((values) => {
+        this.statistics = values;
+      });
+  }
+
+  ngOnDestroy() {
+    this.endsubs$.next();
+    this.endsubs$.complete();
   }
 }

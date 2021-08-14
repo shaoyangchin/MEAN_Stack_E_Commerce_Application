@@ -16,7 +16,7 @@ export class UsersFormComponent implements OnInit {
   isSubmitted = false;
   editMode = false;
   currentUserId: string;
-  countries: any [];
+  countries = [];
 
   constructor(
     private messageService: MessageService,
@@ -114,6 +114,7 @@ export class UsersFormComponent implements OnInit {
           this.userForm.zip.setValue(user.zip);
           this.userForm.city.setValue(user.city);
           this.userForm.country.setValue(user.country);
+
           this.userForm.password.setValidators([]);
           this.userForm.password.updateValueAndValidity();
         });
