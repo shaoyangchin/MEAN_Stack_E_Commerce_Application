@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@munch/ui';
 import {AccordionModule} from 'primeng/accordion';
+import { NavComponent } from './shared/nav/nav.component';
 
 
 const routes: Routes = [{
@@ -19,7 +20,7 @@ const routes: Routes = [{
 {path: "products", component: ProductListComponent}]
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent, NavComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
