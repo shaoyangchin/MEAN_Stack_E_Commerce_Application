@@ -9,8 +9,10 @@
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
+@import '~animate.css/animate.css';
 
 @import './base/configurations.scss';
+
 
 // SHARED
 @import './apps/shop/shared/header.scss';
@@ -25,6 +27,7 @@
 @import './libs/products/products.scss';
 @import './libs/orders/orders.scss';
 @import './libs/users/users.scss';
+@import './libs/ui/ui.scss';
 
 .container {
   width: 1200px;

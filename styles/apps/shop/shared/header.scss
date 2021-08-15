@@ -1,12 +1,24 @@
 header {
+  width: 100%;
+  margin-bottom: 25px;
   .logo {
     img {
-      width: 160px;
+      width: 180px;
     }
   }
 
+  .search {
+    padding-top: 25px;
+  }
+
+  .navigation {
+    padding-top: 25px;
+  }
+
   .tools {
-      padding-top: 22px;
+      padding-top: 38px;
+      text-align: right;
+      font-size: 30;
 
       .pi {
           margin-right: 10px;
