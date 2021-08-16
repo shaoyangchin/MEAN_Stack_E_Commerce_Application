@@ -3,24 +3,41 @@ import { CommonModule } from '@angular/common';
 import { OrdersModule } from '@munch/orders';
 import { ProductsSearchComponent } from './components/products-search/products-search.component';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { ButtonModule } from 'primeng/button';
+import { ProductsListComponent } from './pages/products-list/products-list.component';
+import { CheckboxModule } from 'primeng/checkbox';
+
+const routes: Routes = [
+  {
+    path: 'products',
+    component: ProductsListComponent,
+  },
+];
 
 @NgModule({
-  imports: [CommonModule, OrdersModule, RouterModule, ButtonModule],
+  imports: [
+    CommonModule,
+    OrdersModule,
+    RouterModule.forChild(routes),
+    ButtonModule,
+    CheckboxModule,
+  ],
   declarations: [
     ProductsSearchComponent,
     CategoriesBannerComponent,
     ProductItemComponent,
-    FeaturedProductsComponent
+    FeaturedProductsComponent,
+    ProductsListComponent,
   ],
   exports: [
     ProductsSearchComponent,
     CategoriesBannerComponent,
     ProductItemComponent,
-    FeaturedProductsComponent
-  ]
+    FeaturedProductsComponent,
+    ProductsListComponent,
+  ],
 })
 export class ProductsModule {}

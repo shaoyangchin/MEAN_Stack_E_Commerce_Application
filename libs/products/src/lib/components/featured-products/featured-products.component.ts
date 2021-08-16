@@ -27,8 +27,7 @@ export class FeaturedProductsComponent implements OnInit, OnDestroy {
   private _getFeaturedProducts() {
     this.prodService
       .getFeaturedProducts(4)
-      .pipe(takeUntil(this.endSubs$))
-      .subscribe((products) => {
+      .subscribe(products => {
         this.featuredProducts = products;
         console.log(products)
       });
