@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrdersModule } from '@munch/orders';
+import { UiModule } from '@munch/ui';
 import { ProductsSearchComponent } from './components/products-search/products-search.component';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -39,6 +40,7 @@ const routes: Routes = [
     FormsModule,
     RatingModule,
     InputNumberModule,
+    UiModule,
   ],
   declarations: [
     ProductsSearchComponent,
