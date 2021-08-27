@@ -18,6 +18,7 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "skipDefaultLibCheck": true,
+    "noImplicitReturns": false,
     "baseUrl": ".",
     "paths": {
       "@env/*": ["environments/*"],

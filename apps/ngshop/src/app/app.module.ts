@@ -13,6 +13,7 @@ import { ProductsModule } from '@munch/products';
 import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersModule } from '@munch/orders';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
     AccordionModule,
     BrowserAnimationsModule,
     UiModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent],

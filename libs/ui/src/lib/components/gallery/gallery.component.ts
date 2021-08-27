@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,15 +7,22 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [],
 })
 export class GalleryComponent implements OnInit {
-  selectedImage: string;
+  selectedImageUrl: string;
 
   @Input() images: string[];
 
-  constructor() {}
-
   ngOnInit(): void {
     if (this.images.length) {
-      this.selectedImage = this.images[0];
+      this.selectedImageUrl = this.images[0];
     }
+  }
+
+  changeSelectedImage(imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+  }
+
+
+  get hasImages() {
+    return this.images?.length > 0;
   }
 }
