@@ -59,7 +59,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         life: 2000,
       });
     }
-    this.cartService.setCartItem(cartItem);
   }
 
   private _getProduct(id: string) {

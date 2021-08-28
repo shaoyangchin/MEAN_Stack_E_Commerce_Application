@@ -42,6 +42,8 @@
                 [inputId]="cartItem.product.id"
                 [min]="1"
                 [max]="100"
+                [(ngModel)]="cartItem.quantity"
+                (onInput)="updateCartItemQuantity($event, cartItem)"
               >
               </p-inputNumber>
             </div>
@@ -55,6 +57,8 @@
         </div>
       </div>
     </div>
-    <div class="col-4">Order Summary</div>
+    <div class="col-4">
+      <orders-order-summary></orders-order-summary>
+    </div>
   </div>
 </div>

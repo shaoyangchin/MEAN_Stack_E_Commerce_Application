@@ -65,4 +65,14 @@ export class CartPageComponent implements OnInit, OnDestroy {
       life: 2000,
     });
   }
+
+  updateCartItemQuantity(event, cartItem: CartItemDetailed) {
+    this.cartService.setCartItem(
+      {
+        productId: cartItem.product.id,
+        quantity: event.value,
+      },
+      true
+    );
+  }
 }

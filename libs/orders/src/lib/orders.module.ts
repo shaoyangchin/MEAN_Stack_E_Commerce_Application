@@ -8,6 +8,8 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -24,9 +26,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ButtonModule,
     InputNumberModule,
+    FormsModule,
   ],
-  declarations: [CartIconComponent, CartPageComponent],
-  exports: [CartIconComponent, CartPageComponent],
+  declarations: [CartIconComponent, CartPageComponent, OrderSummaryComponent],
+  exports: [CartIconComponent, CartPageComponent, OrderSummaryComponent],
 })
 export class OrdersModule {
   constructor(cartService: CartService) {

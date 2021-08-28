@@ -41,6 +41,5 @@ export class ProductItemComponent implements OnInit {
         life: 2000,
       });
     }
-    this.cartService.setCartItem(Cart);
   }
 }
