@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
@@ -7,13 +8,22 @@ import { OrdersService } from '../../services/orders.service';
 @Component({
   selector: 'orders-order-summary',
   templateUrl: './order-summary.component.html',
-  styles: []
+  styles: [],
 })
 export class OrderSummaryComponent implements OnInit, OnDestroy {
   endSubs$: Subject<any> = new Subject();
   totalPrice: number;
+  isCheckOut = false;
 
-  constructor(private cartService: CartService, private ordersService: OrdersService) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private ordersService: OrdersService
+  ) {
+    this.router.url.includes('checkout')
+      ? (this.isCheckOut = true)
+      : (this.isCheckOut = false);
+  }
 
   ngOnInit(): void {
     this._getOrderSummary();
@@ -38,5 +48,9 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  navigateToCheckout() {
+    this.router.navigate(['/checkout']);
   }
 }
