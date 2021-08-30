@@ -7,6 +7,7 @@ import { Order } from '../../models/order';
 import { OrderItem } from '../../models/order-item';
 import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
+import { ORDER_STATUS } from '../../order.constants';
 
 @Component({
   selector: 'orders-checkout-page',
@@ -34,14 +35,14 @@ export class CheckoutPageComponent implements OnInit {
 
   private _initCheckoutForm() {
     this.checkoutFormGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.email, Validators.required]],
-      phone: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
-      zip: ['', Validators.required],
-      apartment: ['', Validators.required],
-      street: ['', Validators.required],
+      name: ['Test', Validators.required],
+      email: ['test@gmail.com', [Validators.email, Validators.required]],
+      phone: ['9999999999', Validators.required],
+      city: ['TestCity', Validators.required],
+      country: ['TestCountry', Validators.required],
+      zip: ['TestZip', Validators.required],
+      apartment: ['TestApartment', Validators.required],
+      street: ['TestStreet', Validators.required],
     });
   }
 
@@ -77,13 +78,13 @@ export class CheckoutPageComponent implements OnInit {
       zip: this.checkoutForm.zip.value,
       country: this.checkoutForm.country.value,
       phone: this.checkoutForm.phone.value,
-      status: this.checkoutForm.status.value,
+      status: 0,
       user: this.userId,
       dateOrdered: `${Date.now()}`,
     };
-    this.ordersService.createOrder(order).subscribe(()=> {
-      //Redirect to Payment Page
-      //Redirect to Thank You Page
+    this.ordersService.createOrder(order).subscribe(() => {
+      this.cartService.emptyCart();
+      this.router.navigate(['/success']);
     });
   }
 

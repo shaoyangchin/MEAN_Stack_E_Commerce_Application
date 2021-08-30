@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Order, OrdersService } from '@munch/orders';
+import { Order, OrdersService, ORDER_STATUS } from '@munch/orders';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ORDER_STATUS } from '../order.constants';
 
 @Component({
   selector: 'admin-orders-detail',
@@ -56,25 +55,25 @@ export class OrdersDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  // onStatusChange(event) {
-  //   this.orderService
-  //     .updateOrder({ status: event.value }, this.order.id)
-  //     .pipe(takeUntil(this.endsubs$))
-  //     .subscribe(
-  //       () => {
-  //         this.messageService.add({
-  //           severity: 'success',
-  //           summary: 'Success',
-  //           detail: 'Order is updated!'
-  //         });
-  //       },
-  //       () => {
-  //         this.messageService.add({
-  //           severity: 'error',
-  //           summary: 'Error',
-  //           detail: 'Order is not updated!'
-  //         });
-  //       }
-  //     );
-  // }
+  onStatusChange(event) {
+    this.orderService
+      .updateOrder({ status: event.value }, this.order.id)
+      .pipe(takeUntil(this.endsubs$))
+      .subscribe(
+        () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Order is updated!'
+          });
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Order is not updated!'
+          });
+        }
+      );
+  }
 }

@@ -6,14 +6,18 @@
         <p-table [value]="orders" styleClass="p-datatable-gridlines">
           <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="name">User <p-sortIcon field="user"></p-sortIcon></th>
+              <th pSortableColumn="name">
+                User <p-sortIcon field="user"></p-sortIcon>
+              </th>
               <th pSortableColumn="totalPrice">
                 Total Price <p-sortIcon field="totalPrice"></p-sortIcon>
               </th>
               <th pSortableColumn="dateOrdered">
                 Date Ordered <p-sortIcon field="dateOrdered"></p-sortIcon>
               </th>
-              <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+              <th pSortableColumn="status">
+                Status <p-sortIcon field="status"></p-sortIcon>
+              </th>
               <th></th>
             </tr>
           </ng-template>
