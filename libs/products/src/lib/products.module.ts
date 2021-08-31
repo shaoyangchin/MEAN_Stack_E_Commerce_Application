@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ToastModule } from 'primeng/toast';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
     RatingModule,
     InputNumberModule,
     UiModule,
+    ToastModule,
   ],
   declarations: [
     ProductsSearchComponent,

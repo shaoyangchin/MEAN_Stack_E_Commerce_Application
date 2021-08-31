@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ui-banner',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

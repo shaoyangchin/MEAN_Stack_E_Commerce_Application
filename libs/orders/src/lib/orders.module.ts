@@ -14,19 +14,21 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
+import { AuthGuard } from '@munch/users';
 const routes: Routes = [
   {
     path: 'cart',
-    component: CartPageComponent
+    component: CartPageComponent,
   },
   {
     path: 'checkout',
-    component: CheckoutPageComponent
+    canActivate: [AuthGuard],
+    component: CheckoutPageComponent,
   },
   {
     path: 'success',
-    component: ThankYouComponent
-  }
+    component: ThankYouComponent,
+  },
 ];
 @NgModule({
   imports: [
@@ -39,7 +41,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputTextModule,
     InputMaskModule,
-    DropdownModule
+    DropdownModule,
   ],
   providers: [],
   declarations: [
@@ -47,9 +49,9 @@ const routes: Routes = [
     CartPageComponent,
     OrderSummaryComponent,
     CheckoutPageComponent,
-    ThankYouComponent
+    ThankYouComponent,
   ],
-  exports: [CartIconComponent, CartPageComponent, OrderSummaryComponent]
+  exports: [CartIconComponent, CartPageComponent, OrderSummaryComponent],
 })
 export class OrdersModule {
   constructor(cartService: CartService) {

@@ -37,6 +37,9 @@ import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detai
 import { FieldsetModule } from 'primeng/fieldset';
 import { AppRoutingModule } from './app-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 const UX_MODULE = [
   CardModule,
   ToastModule,
@@ -53,7 +56,7 @@ const UX_MODULE = [
   EditorModule,
   TagModule,
   InputMaskModule,
-  FieldsetModule
+  FieldsetModule,
 ];
 
 @NgModule({
@@ -69,24 +72,26 @@ const UX_MODULE = [
     UsersListComponent,
     UsersFormComponent,
     OrdersListComponent,
-    OrdersDetailComponent
+    OrdersDetailComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     FormsModule,
     ReactiveFormsModule,
     UsersModule,
-    ...UX_MODULE
+    ...UX_MODULE,
   ],
   providers: [
     CategoriesService,
     MessageService,
     ConfirmationService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,4 @@
 import { OrderItem } from './order-item';
-import { User } from '@munch/users';
 
 export class Order {
   id?: string;

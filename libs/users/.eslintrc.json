@@ -27,9 +27,7 @@
         ],
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-var-requires": "off",
-        "skipLibCheck": false,
-        "noImplicitAny": true
+        "@typescript-eslint/no-var-requires": "off"
       }
     },
     {

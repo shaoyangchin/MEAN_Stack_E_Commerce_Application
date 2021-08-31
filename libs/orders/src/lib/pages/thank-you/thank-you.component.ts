@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'thank-you-page',
+  selector: 'orders-thank-you-page',
   templateUrl: './thank-you.component.html',
   styles: [
   ]
 })
-export class ThankYouComponent implements OnInit {
+export class ThankYouComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

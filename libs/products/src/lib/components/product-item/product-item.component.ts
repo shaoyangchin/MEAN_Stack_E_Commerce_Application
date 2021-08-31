@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '@munch/products';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../models/product';
 import { CartItem, CartService } from '@munch/orders';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
   selector: 'products-product-item',
   templateUrl: './product-item.component.html',
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
   @Input() product!: Product;
   endSubs$: Subject<any> = new Subject();
   quantity: number;
@@ -17,8 +17,6 @@ export class ProductItemComponent implements OnInit {
     private cartService: CartService,
     private messageService: MessageService
   ) {}
-
-  ngOnInit(): void {}
 
   addProductToCart() {
     const Cart: CartItem = {
