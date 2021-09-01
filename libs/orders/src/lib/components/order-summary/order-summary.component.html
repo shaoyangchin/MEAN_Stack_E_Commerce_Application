@@ -13,7 +13,7 @@
         <span>Total Price</span>
         <span>{{ totalPrice | currency }}</span>
       </div>
-      <div class="checkout-button" *ngIf="!isCheckOut">
+      <div class="checkout-button" *ngIf="!isCheckout">
         <p-button label="Checkout" (onClick)="navigateToCheckout()"></p-button>
       </div>
     </div>

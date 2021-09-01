@@ -7,8 +7,8 @@ import * as UsersSelectors from './users.selectors';
 
 @Injectable()
 export class UsersFacade {
-  currentUser$ = this.store.pipe(select(UsersSelectors.getUser));
-  isAuthenticated$ = this.store.pipe(select(UsersSelectors.getUserIsAuth));
+  // currentUser$ = this.store.pipe(select(UsersSelectors.getUser));
+  // isAuthenticated$ = this.store.pipe(select(UsersSelectors.getUserIsAuth));
 
   constructor(private store: Store) {}
 

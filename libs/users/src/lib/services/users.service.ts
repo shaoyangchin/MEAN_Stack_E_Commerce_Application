@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
-import { environment } from '@env/environment';
+import { environment } from '../../environments/environment';
 import * as countriesLib from 'i18n-iso-countries';
 import { UsersFacade } from '../state/users.facade';
 declare const require;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
   apiURLUsers = environment.apiURL + 'users';
@@ -45,10 +45,12 @@ export class UsersService {
   }
 
   getCountries(): { id: string; name: string }[] {
-    return Object.entries(countriesLib.getNames('en', { select: 'official' })).map((entry) => {
+    return Object.entries(
+      countriesLib.getNames('en', { select: 'official' })
+    ).map((entry) => {
       return {
         id: entry[0],
-        name: entry[1]
+        name: entry[1],
       };
     });
   }
@@ -61,11 +63,11 @@ export class UsersService {
     this.usersFacade.buildUserSession();
   }
 
-  observeCurrentUser() {
-    return this.usersFacade.currentUser$;
-  }
+  // observeCurrentUser() {
+  //   return this.usersFacade.currentUser$;
+  // }
 
-  isCurrentUserAuth() {
-    return this.usersFacade.isAuthenticated$;
-  }
+  // isCurrentUserAuth() {
+  //   return this.usersFacade.isAuthenticated$;
+  // }
 }

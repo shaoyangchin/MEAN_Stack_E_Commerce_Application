@@ -18,17 +18,17 @@ import { AuthGuard } from '@munch/users';
 const routes: Routes = [
   {
     path: 'cart',
-    component: CartPageComponent,
+    component: CartPageComponent
   },
   {
     path: 'checkout',
     canActivate: [AuthGuard],
-    component: CheckoutPageComponent,
+    component: CheckoutPageComponent
   },
   {
     path: 'success',
-    component: ThankYouComponent,
-  },
+    component: ThankYouComponent
+  }
 ];
 @NgModule({
   imports: [
@@ -41,7 +41,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputTextModule,
     InputMaskModule,
-    DropdownModule,
+    DropdownModule
   ],
   providers: [],
   declarations: [
@@ -49,9 +49,9 @@ const routes: Routes = [
     CartPageComponent,
     OrderSummaryComponent,
     CheckoutPageComponent,
-    ThankYouComponent,
+    ThankYouComponent
   ],
-  exports: [CartIconComponent, CartPageComponent, OrderSummaryComponent],
+  exports: [CartIconComponent, CartPageComponent, OrderSummaryComponent]
 })
 export class OrdersModule {
   constructor(cartService: CartService) {

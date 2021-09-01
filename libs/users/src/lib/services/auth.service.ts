@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '@env/environment';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { LocalstorageService } from './localstorage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   apiURLUsers = environment.apiURL + 'users';
@@ -19,7 +19,10 @@ export class AuthService {
   ) {}
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${this.apiURLUsers}/login`, { email, password });
+    return this.http.post<User>(`${this.apiURLUsers}/login`, {
+      email,
+      password,
+    });
   }
 
   logout() {

@@ -55,22 +55,22 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   }
 
   private _autoFillUserData() {
-    this.usersService
-      .observeCurrentUser()
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((user) => {
-        if (user) {
-          this.userId = user.id;
-          this.checkoutForm.name.setValue(user.name);
-          this.checkoutForm.email.setValue(user.email);
-          this.checkoutForm.phone.setValue(user.phone);
-          this.checkoutForm.city.setValue(user.city);
-          this.checkoutForm.street.setValue(user.street);
-          this.checkoutForm.country.setValue(user.country);
-          this.checkoutForm.zip.setValue(user.zip);
-          this.checkoutForm.apartment.setValue(user.apartment);
-        }
-      });
+    // this.usersService
+    //   .observeCurrentUser()
+    //   .pipe(takeUntil(this.unsubscribe$))
+    //   .subscribe((user) => {
+    //     if (user) {
+    //       this.userId = user.id;
+    //       this.checkoutForm.name.setValue(user.name);
+    //       this.checkoutForm.email.setValue(user.email);
+    //       this.checkoutForm.phone.setValue(user.phone);
+    //       this.checkoutForm.city.setValue(user.city);
+    //       this.checkoutForm.street.setValue(user.street);
+    //       this.checkoutForm.country.setValue(user.country);
+    //       this.checkoutForm.zip.setValue(user.zip);
+    //       this.checkoutForm.apartment.setValue(user.apartment);
+    //     }
+    //   });
   }
 
   private _getCartItems() {
