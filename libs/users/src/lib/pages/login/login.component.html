@@ -2,11 +2,14 @@
   <div class="login-register-panel">
     <div class="grid">
       <div class="col-6">
-        <img src="assets/images/login-photo.png" />
+        <img
+          class="login-register-image"
+          src="assets/images/login-photo.png"
+        />
       </div>
       <div class="col-6 p-5">
-        <h3>Welcome!</h3>
-        <h2>Login Page</h2>
+        <h2>Welcome!</h2>
+        <h3>Please login to continue</h3>
         <form [formGroup]="loginFormGroup">
           <div class="grid mt-6">
             <div class="col-12">
@@ -25,12 +28,12 @@
                 *ngIf="loginForm.email.invalid && isSubmitted"
                 class="p-error"
                 ><span *ngIf="loginForm.email.errors.required"
-                  >Email is required</span
+                  >email is required</span
                 >
                 <span *ngIf="loginForm.email.errors.email"
-                  >Email is invalid</span
-                >
-              </small>
+                  >email is invalid</span
+                ></small
+              >
             </div>
             <div class="col-12">
               <div class="p-inputgroup">
@@ -52,7 +55,7 @@
             </div>
             <div class="col-12">
               <p-button
-                label="Login"
+                label="Submit"
                 styleClass="full-btn"
                 (onClick)="onSubmit()"
               ></p-button>
